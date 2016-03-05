@@ -1,0 +1,15 @@
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\DGavian.GapFiller.UnitTests.dll
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\DGavian.GapFiller.UnitTests.pdb
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\DGavian.GapFiller.dll
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\nunit.framework.dll
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\DGavian.GapFiller.pdb
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\nunit.framework.xml
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\obj\Debug\DGavian.GapFiller.UnitTests.csprojResolveAssemblyReference.cache
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\obj\Debug\DGavian.GapFiller.UnitTests.dll
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\obj\Debug\DGavian.GapFiller.UnitTests.pdb
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\FluentAssertions.Core.dll
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\FluentAssertions.dll
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\FluentAssertions.pdb
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\FluentAssertions.xml
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\FluentAssertions.Core.pdb
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller.UnitTests\bin\Debug\FluentAssertions.Core.xml

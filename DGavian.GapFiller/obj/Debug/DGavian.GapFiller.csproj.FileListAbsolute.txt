@@ -1,0 +1,5 @@
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller\bin\Debug\DGavian.GapFiller.dll
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller\bin\Debug\DGavian.GapFiller.pdb
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller\obj\Debug\DGavian.GapFiller.csprojResolveAssemblyReference.cache
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller\obj\Debug\DGavian.GapFiller.dll
+C:\Repos\DGavian.GapFiller\DGavian.GapFiller\obj\Debug\DGavian.GapFiller.pdb
