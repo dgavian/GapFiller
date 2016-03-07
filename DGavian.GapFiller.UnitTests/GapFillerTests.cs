@@ -12,13 +12,15 @@ namespace DGavian.GapFiller.UnitTests
     [TestFixture]
     public class GapFillerTests
     {
-        private double _interval;
+        private decimal _interval;
 
+        [TestCase(100, 1000)]
         [TestCase(10, 100)]
         [TestCase(1, 10)]
         [TestCase(0.5, 5)]
         [TestCase(0.1, 1)]
-        public void FillGaps_BasicCollectionWithGaps_FillsGaps(double interval, double upperBound)
+        [TestCase(0.01, 0.1)]
+        public void FillGaps_BasicCollectionWithGaps_FillsGaps(decimal interval, decimal upperBound)
         {
             _interval = interval;
             const int upperGapIndex = 8;
@@ -37,11 +39,13 @@ namespace DGavian.GapFiller.UnitTests
             itemsWithGaps.ShouldAllBeEquivalentTo(expected);
         }
 
+        [TestCase(100, 1000)]
         [TestCase(10, 100)]
         [TestCase(1, 10)]
         [TestCase(0.5, 5)]
         [TestCase(0.1, 1)]
-        public void FillGaps_GapWithMoreThanOneInterval_FillsGap(double interval, double upperBound)
+        [TestCase(0.01, 0.1)]
+        public void FillGaps_GapWithMoreThanOneInterval_FillsGap(decimal interval, decimal upperBound)
         {
             _interval = interval;
             var expected = MakeTestDataCollection(upperBound, interval);
@@ -66,22 +70,18 @@ namespace DGavian.GapFiller.UnitTests
         }
 
 
-        private List<TestData> MakeTestDataCollection(double upperBound, double step)
+        private List<TestData> MakeTestDataCollection(decimal upperBound, decimal step)
         {
-            // Convert to decimals to avoid floating point precision errors.
-            var upperBoundDecimal = (decimal)upperBound;
-            var stepDecimal = (decimal)step;
             var result = new List<TestData>();
-            for (decimal i = 0; i < upperBoundDecimal; i += stepDecimal)
+            for (decimal i = 0; i < upperBound; i += step)
             {
-                var interval = (double)i;
-                var data = MakeTestData(interval);
+                var data = MakeTestData(i);
                 result.Add(data);
             }
             return result;
         }
 
-        private TestData MakeTestData(double offset)
+        private TestData MakeTestData(decimal offset)
         {
             var result = new TestData { Offset = offset };
             return result;

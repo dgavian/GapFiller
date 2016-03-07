@@ -9,6 +9,6 @@ namespace DGavian.GapFiller.UnitTests.TestHelpers
 {
     public class TestData : IOffset
     {
-        public double Offset { get; set; }
+        public decimal Offset { get; set; }
     }
 }

@@ -7,9 +7,9 @@ namespace DGavian.GapFiller
 {
     public sealed class GapFiller<T> : IGapFiller<T> where T : IOffset, new()
     {
-        private double _expectedInterval;
+        private decimal _expectedInterval;
 
-        public GapFiller(double expectedInterval)
+        public GapFiller(decimal expectedInterval)
         {
             _expectedInterval = expectedInterval;
         }
@@ -28,7 +28,7 @@ namespace DGavian.GapFiller
         /// </summary>
         /// <param name="items">A list of items with gaps to fill.</param>
         /// <param name="getDefaultRecord">A delegate wrapping a method to use to generate default records to fill gaps.</param>
-        public void FillGaps(List<T> items, Func<double, T> getDefaultRecord)
+        public void FillGaps(List<T> items, Func<decimal, T> getDefaultRecord)
         {
             var gapData = GetGapData(items);
             foreach (var gd in gapData)
@@ -43,10 +43,10 @@ namespace DGavian.GapFiller
 
             var data = items.ToArray();
             // Set the first previous to the first element in the array.
-            double previous = data[0].Offset;
+            decimal previous = data[0].Offset;
 
-            double current = 0.0;
-            double gap = 0.0;
+            decimal current = 0M;
+            decimal gap = 0M;
 
             int count = 0;
             int runningCount = 0;
@@ -70,26 +70,26 @@ namespace DGavian.GapFiller
             return result;
         }
 
-        private List<T> GetGapFillData(GapData gapData, Func<double, T> getDefaultRecord)
+        private List<T> GetGapFillData(GapData gapData, Func<decimal, T> getDefaultRecord)
         {
             var result = new List<T>();
             for (int i = 1; i <= gapData.Count; i++)
             {
-                double offset = gapData.PreviousOffset + (i * _expectedInterval);
+                decimal offset = gapData.PreviousOffset + (i * _expectedInterval);
                 result.Add(getDefaultRecord(offset));
             }
             return result;
         }
 
         // Default implementation of default record just sets the offset and leaves any other fields as their default value.
-        private T GetDefaultRecord(double offset)
+        private T GetDefaultRecord(decimal offset)
         {
             return new T { Offset = offset };
         }
 
         private class GapData
         {
-            public double PreviousOffset { get; set; }
+            public decimal PreviousOffset { get; set; }
             public int Index { get; set; }
             public int Count { get; set; }
         }

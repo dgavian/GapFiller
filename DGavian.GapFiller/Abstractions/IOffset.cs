@@ -2,6 +2,6 @@
 {
     public interface IOffset
     {
-        double Offset { get; set; }
+        decimal Offset { get; set; }
     }
 }

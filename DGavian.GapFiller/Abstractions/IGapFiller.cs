@@ -7,6 +7,6 @@ namespace DGavian.GapFiller.Abstractions
      where T : IOffset, new()
     {
         void FillGaps(List<T> items);
-        void FillGaps(List<T> items, Func<double, T> getDefaultRecord);
+        void FillGaps(List<T> items, Func<decimal, T> getDefaultRecord);
     }
 }
