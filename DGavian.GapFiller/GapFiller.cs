@@ -5,15 +5,13 @@ using System.Linq;
 
 namespace DGavian.GapFiller
 {
-    // This project can output the Class library as a NuGet Package.
-    // To enable this option, right-click on the project and select the Properties menu item. In the Build tab select "Produce outputs on build".
     public sealed class GapFiller<T> : IGapFiller<T> where T : IOffset, new()
     {
-        private double _expectedOffset;
+        private double _expectedInterval;
 
-        public GapFiller(double expectedOffset)
+        public GapFiller(double expectedInterval)
         {
-            _expectedOffset = expectedOffset;
+            _expectedInterval = expectedInterval;
         }
 
         /// <summary>
@@ -32,14 +30,14 @@ namespace DGavian.GapFiller
         /// <param name="getDefaultRecord">A delegate wrapping a method to use to generate default records to fill gaps.</param>
         public void FillGaps(List<T> items, Func<double, T> getDefaultRecord)
         {
-            var gapData = GetGapData(items, _expectedOffset);
+            var gapData = GetGapData(items);
             foreach (var gd in gapData)
             {
                 items.InsertRange(gd.Index, GetGapFillData(gd, getDefaultRecord));
             }
         }
 
-        private List<GapData> GetGapData(IEnumerable<T> items, double expectedOffset)
+        private List<GapData> GetGapData(IEnumerable<T> items)
         {
             var result = new List<GapData>();
 
@@ -58,10 +56,10 @@ namespace DGavian.GapFiller
             {
                 current = data[i].Offset;
                 gap = current - previous;
-                if (gap > expectedOffset)
+                if (gap > _expectedInterval)
                 {
                     // Number of items to insert.
-                    count = (int)gap - 1;
+                    count = (int)((gap - _expectedInterval) / _expectedInterval);
                     // Increase the index by the running count to account for previously inserted item(s) shifting indexes. 
                     result.Add(new GapData { PreviousOffset = previous, Count = count, Index = i + runningCount });
                     runningCount += count;
@@ -77,7 +75,7 @@ namespace DGavian.GapFiller
             var result = new List<T>();
             for (int i = 1; i <= gapData.Count; i++)
             {
-                double offset = gapData.PreviousOffset + (i * _expectedOffset);
+                double offset = gapData.PreviousOffset + (i * _expectedInterval);
                 result.Add(getDefaultRecord(offset));
             }
             return result;
