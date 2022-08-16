@@ -44,18 +44,14 @@ namespace DGavian.GapFiller
             var data = items.ToArray();
             // Set the first previous to the first element in the array.
             decimal previous = data[0].Offset;
-
-            decimal current = 0M;
-            decimal gap = 0M;
-
             int count = 0;
             int runningCount = 0;
 
             // Start on the 2nd element.
             for (int i = 1; i < data.Length; i++)
             {
-                current = data[i].Offset;
-                gap = current - previous;
+                decimal current = data[i].Offset;
+                decimal gap = current - previous;
                 if (gap > _expectedInterval)
                 {
                     // Number of items to insert.

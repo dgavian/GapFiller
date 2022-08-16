@@ -32,7 +32,7 @@ namespace DGavian.GapFiller.UnitTests
             sut.FillGaps(itemsWithGaps);
 
             Assert.That(itemsWithGaps.Count, Is.EqualTo(expected.Count));
-            itemsWithGaps.ShouldAllBeEquivalentTo(expected);
+            itemsWithGaps.Should().BeEquivalentTo(expected);
         }
 
         [TestCase(100, 1000)]
@@ -57,7 +57,7 @@ namespace DGavian.GapFiller.UnitTests
             sut.FillGaps(itemsWithGaps);
 
             Assert.That(itemsWithGaps.Count, Is.EqualTo(expected.Count));
-            itemsWithGaps.ShouldAllBeEquivalentTo(expected);
+            itemsWithGaps.Should().BeEquivalentTo(expected);
         }
 
         private GapFiller<TestData> MakeSut()
