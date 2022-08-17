@@ -7,7 +7,7 @@ namespace DGavian.GapFiller
 {
     public sealed class GapFiller<T> : IGapFiller<T> where T : IOffset, new()
     {
-        private decimal _expectedInterval;
+        private readonly decimal _expectedInterval;
 
         public GapFiller(decimal expectedInterval)
         {
